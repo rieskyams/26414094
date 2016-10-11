@@ -1,0 +1,32 @@
+
+#!/usr/bin/txt
+1.
+vi clearcache.sh
+#!/bin/sh
+free && sync && echo 3 > /proc/sys/vm/drop_caches && echo "" && free
+chmod +x clearcache
+crontab -e
+0 */24 */12 */1-12 /root/clearcache.sh
+service crond restart
+crontab -1
+
+
+2.
+\documentcalss{article}
+\usepackage{booktabs}
+\begin{document}
+\begin{center}
+\begin{tabular}{ |c|c|c| }
+\hline
+ASN & ASN Name & Count & IPv6 Capable & IPv6 Preferred & Samples
+AS4796 & ASN Ribuan & 10 & 130% & 35% & 5000
+AS17996 & ASN Puluhan Ribuan & 5 & 10% & 1% & 100
+\hline
+\end{tabular}
+\end{center}
+\end{document}
+
+3.
+
+
+4.
