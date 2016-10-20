@@ -1,0 +1,3 @@
+#!/usr/bin/text
+print"20 oktober"
+
