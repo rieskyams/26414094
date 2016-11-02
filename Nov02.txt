@@ -1,0 +1,43 @@
+$ curl -o mygettext.html http://www.gnu.org/software/gettext/manual/gettext.html
+
+#!/usr/bin/python
+var = 100
+if var == 200:
+print "1 - Got a true expression value"
+print var
+elif var == 150:
+print "2 - Got a true expression value"
+print var
+elif var == 100:
+print "3 - Got a true expression value"
+print var
+else:
+print "4 - Got a false expression value"
+print var
+print "Good bye!"
+
+from Tkinter import *
+import tkMessageBox
+def hello1Back():
+hasil = int(E2.get()) + int(E1.get())
+tkMessageBox.showinfo("Hello Python", str(hasil))
+def hello2Back():
+hasil = int(E2.get()) - int(E1.get())
+tkMessageBox.showinfo("Hello Python", str(hasil))
+def hello3Back():
+hasil = int(E2.get()) * int(E1.get())
+tkMessageBox.showinfo("Hello Python", str(hasil))
+def hello4Back():
+hasil = float(E2.get()) / float(E1.get())
+tkMessageBox.showinfo("Hello Python", str(hasil))
+
+curl -C - -O http://www.gnu.org/software/gettext/manual/gettext.html
+
+#!/usr/bin/python           
+import socket               
+s = socket.socket()         
+host = socket.gethostname() 
+port = 12345                
+s.connect((host, port))
+print s.recv(1024)
+s.close                     
