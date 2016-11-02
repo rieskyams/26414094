@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+curl --request PUT 'http://www.somedomain.com/rest-api/user/12345/'\
+--data 'email=myemail@gmail.com'
