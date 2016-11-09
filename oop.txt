@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+
+use Employee;
+
+$object = new Employee( "Mohammad", "Saleem", 23234345);
+$firstName = $object->getFirstName();
+
+print "Before Setting First Name is : $firstName\n";
+
+$object->setFirstName( "Mohd." );
+
+$firstName = $object->getFirstName();
+print "After Setting First Name is : $firstName\n";
