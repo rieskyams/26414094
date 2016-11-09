@@ -1,0 +1,521 @@
+\documentclass[11pt, a4paper]{article}
+%\usepackage{geometry}
+\usepackage[inner=1.5cm,outer=1.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\pagestyle{empty}
+\usepackage{longtable}
+\usepackage{array,booktabs,enumitem} 
+\newcolumntype{P}[1]{>{\endgraf\vspace*{-\baselineskip}}p{#1}}
+\usepackage{graphicx}
+\usepackage{fancyhdr, lastpage, bbding, pmboxdraw}
+\usepackage[usenames,dvipsnames]{color}
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.7,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{red}{rgb}{.98,0,0}
+\usepackage[colorlinks,pagebackref,pdfusetitle,urlcolor=darkblue,citecolor=darkblue,linkcolor=darkred,bookmarksnumbered,plainpages=false]{hyperref}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\pagestyle{fancyplain}
+\fancyhf{}
+\lhead{ \fancyplain{}{Teknologi Open Source} }
+%\chead{ \fancyplain{}{} }
+\rhead{ \fancyplain{}{\today} }
+%\rfoot{\fancyplain{}{page \thepage\ of \pageref{LastPage}}}
+\fancyfoot[RO, LE] {page \thepage\ of \pageref{LastPage} }
+\thispagestyle{plain}
+
+%%%%%%%%%%%% LISTING %%%
+\usepackage{listings}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\usepackage{verbatim} % used to display code
+\usepackage{fancyvrb}
+\usepackage{acronym}
+\usepackage{amsthm}
+\VerbatimFootnotes % Required, otherwise verbatim does not work in footnotes!
+
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{lightlightgray}{gray}{0.93}
+
+\lstset{
+%language=bash,                          % Code langugage
+basicstyle=\ttfamily,                   % Code font, Examples: \footnotesize, \ttfamily
+keywordstyle=\color{OliveGreen},        % Keywords font ('*' = uppercase)
+commentstyle=\color{gray},              % Comments font
+numbers=left,                           % Line nums position
+numberstyle=\tiny,                      % Line-numbers fonts
+stepnumber=1,                           % Step between two line-numbers
+numbersep=5pt,                          % How far are line-numbers from code
+backgroundcolor=\color{lightlightgray}, % Choose background color
+frame=none,                             % A frame around the code
+tabsize=2,                              % Default tab size
+captionpos=t,                           % Caption-position = bottom
+breaklines=true,                        % Automatic line breaking?
+breakatwhitespace=false,                % Automatic breaks only at whitespace?
+showspaces=false,                       % Dont make spaces visible
+showtabs=false,                         % Dont make tabls visible
+columns=flexible,                       % Column format
+morekeywords={__global__, __device__},  % CUDA specific keywords
+}
+
+\newenvironment{myitemize}
+{ \begin{itemize} [label={--},noitemsep,leftmargin=*,topsep=0pt,partopsep=0pt]  }
+	{ \end{itemize}  }
+	      
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{center}
+{\Large \textsc{Teknologi Open Source}}
+\end{center}
+\begin{center}
+Semester Gasal 2016
+\end{center}
+%\date{10 Agustus 2014}
+
+\begin{center}
+\rule{6in}{0.4pt}
+\begin{minipage}[t]{.75\textwidth}
+\begin{tabular}{llcccll}
+\textbf{Dosen:} & Iwan Njoto Sandjaja & & &  & \textbf{Waktu:} & Kamis 07:30 -- 10:00 \\
+\textbf{Email:} &  \href{mailto:iwanns@petra.ac.id}{iwanns@petra.ac.id} & & & & \textbf{Tempat:} & Puskom P Lab A
+\end{tabular}
+\end{minipage}
+\rule{6in}{0.4pt}
+\end{center}
+\vspace{.5cm}
+\setlength{\unitlength}{1in}
+\renewcommand{\arraystretch}{2}
+
+\noindent\textbf{Laman Kuliah:} \begin{enumerate}
+\item \url{https://github.com/inyoot/TOS/}
+\end{enumerate}
+
+\vskip.15in
+\noindent\textbf{Jam Kantor:} Setelah kelas, atau dengan membuat janji temu, atau bertanya lewat LINE grup/email.
+
+\vskip.15in
+\noindent\textbf{Referensi Utama:} %\footnotemark
+Berikut ini adalah daftar buku yang menarik dan berguna untuk pembahasan selama kuliah:
+\begin{itemize}
+\item Wesley J. Chun, {\textit{Core Python Application Programming 3rd edition}}, Prentice Hall, 2012.
+\end{itemize}
+
+% \footnotetext{Downloadable ebook versions are available on AeLP.}
+
+\vskip.15in
+\noindent\textbf{Tujuan:}  
+\begin{itemize}
+	\item Mengenalkan mahasiswa ke teknologi open source yang banyak digunakan di kalangan akademik hingga aplikasi enterprise.
+	\item Mengenalkan mahasiswa ke sistem operasi open source Linux Ubuntu, dan aplikasi-aplikasi yang ada sebagai alternatif sistem proprietary.
+	\item Mengenalkan bahasa pemrograman Python sebagai salah satu bahasa populer di dunia open source.
+\end{itemize}
+
+\vskip.15in
+\noindent\textbf{Kompetensi yang akan dicapai:}  
+\begin{itemize}
+	\item Kemampuan untuk mengadministrasi sistem operasi berbasis open source.
+	\item Kemampuan untuk mengkompilasi dan mengeksekusi program berbasis open source.
+	\item Kemampuan mendeploy aplikasi enterprise berbasis open source.
+	\item Kemampuan mendeploy aplikasi berbasis web.
+\end{itemize}
+
+\vskip.15in
+\noindent\textbf{Susunan Materi:}
+
+Bahan Kajian: System Administration and Maintenance (SAM), Web
+Technologies and Development (WTD), Enterprise Development Software
+(EDS).
+
+\begin{enumerate}
+	\def\labelenumi{\arabic{enumi}.}
+	\item
+	Dasar-dasar Open Source: mengenalkan teknologi open source dan
+	lisensinya.
+	\item
+	SAM/Operating Systems: Installation, Configuration. Instalasi Linux
+	Ubuntu: mengenalkan berbagai jenis instalasi dan langkah-langkahnya.
+	\item
+	SAM/Applications: Installation, Configuration. Administrative
+	Activities: User and group management. Perintah-perintah dasar Linux:
+	mengenalkan perintah-perintah command line yang umum digunakan dalam
+	mengadministrasi sistem operasi Linux dengan shell scripting.
+	\item
+	SAM/Administrative Activities: Automation management. Regular
+	Expression: pengetahuan mengenai regular expression adalah sangat
+	penting di dunia open source, guna memanipulasi teks, pengenalan
+	symbol, dan melakukan perintah-perintah secara batch.
+	\item
+	SAM/Applications: Client services. Bahasa pemrograman Python:
+	mengenalkan interpreter Python sebagai bahasa script yang banyak
+	manfaatnya untuk segala bidang seperti jaringan komputer, grafik,
+	multithreading, database dan client/server.
+	\item
+	WTD/Web Technologies: Server-side programming, Web servers. Web
+	development: membuat web server dengan Python.
+	\item
+	WTD/Web Technologies: Web services: mengenalkan akses ke web services
+	seperti membaca harga saham dari Yahoo Finance.
+	\item
+	WTD/Web Development: Web interfaces, Website implementation and
+	integration. Web framework dengan Python Django: membuat web dinamis
+	dengan framework Django yang menggunakan Python.
+	\item
+	EDS/Enterprise Deployment Software: Configuration, definition and
+	management. Cloud Computing: mengenalkan teknologi cloud computing
+	yang berbasis open source, dengan memanfaatkan Google App Engine API.
+\end{enumerate}
+
+\vskip.15in
+Pokok bahasan dari Matakuliah Teknologi Open Source akan disampaikan
+dalam bentuk perkuliahan dan praktek di dalam laboratorium komputer. Pertemuan dalam matakuliah ini disusun sebagai berikut:
+
+\begin{itemize}
+	\item
+	Bobot MK Teknologi Open Source = 3 sks.
+	\item
+	Total kuliah: 14 kali pertemuan/semester yang setara dengan 3 sks
+\end{itemize}
+
+\vskip.15in
+\noindent\textbf{Rancangan Pembelajaran:}
+
+\begin{longtable}{p{1cm}P{3cm}P{3cm}P{3cm}P{3.5cm}P{1.5cm}}
+	\toprule
+	\textbf{Perte-muan ke} & \textbf{Kemampuan akhir yang diharapkan } &
+	\textbf{Materi Pembelajaran} & \textbf{Bentuk Pembelajaran} &
+	\textbf{Kriteria Penilaian} & \textbf{Bobot Nilai (\%)}\\
+	\midrule
+	\endhead
+
+1 & Memahami konsep-konsep dasar Open Source & 
+\begin{myitemize}
+	\item
+		Arti open source
+	\item
+		Sejarah Linux
+	\item
+		Instalasi OS Linux Ubuntu dalam virtual machine
+	\item
+		Membuat akun Git-Hub atau BitBucket
+\end{myitemize} & 
+\begin{myitemize}
+	\item
+		Presentasi
+	\item
+		Tanya-jawab
+	\item
+		Demo/praktek instalasi OS
+\end{myitemize} & &\\
+
+2, 3 & Memahami perintah-perintah dasar OS Linux & 
+\begin{myitemize}
+	\item
+	Perintah-perintah command line OS Linux
+	\item
+	Perintah-perintah dasar git
+	\item
+	Shell programming dengan bash
+\end{myitemize} & 
+\begin{myitemize}
+	\item
+	Presentasi
+	\item
+	Contoh kasus
+	\item
+	Tanya-jawab
+	\item
+	Latihan Tertulis di setiap akhir pertemuan
+\end{myitemize} & 
+\begin{myitemize} 
+	\item
+	Kemampuan memahami metode yang diajarkan dan dapat menerapkan untuk menjawab soal-soal latihan 
+\end{myitemize} & 
+Total Nilai Latihan = 25\% (*)\\
+
+4, 5 & Memahami dan dapat menerapkan string manipulation, searching, menggunakan regular expression. & 
+\begin{myitemize}
+	\item
+	Regular Expression dalam bash shell dan command line
+	\item
+	Regular Expression dalam Perl
+	\item
+	Pengenalan LaTeX.
+\end{myitemize} & 
+\begin{myitemize}
+	\item
+	Presentasi
+	\item
+	Contoh kasus
+	\item
+	Tanya-jawab
+	\item
+	Latihan Tertulis disetiap akhir pertemuan
+\end{myitemize} & 
+\begin{myitemize}
+	\item Kemampuan memahami metode yang diajarkan dan dapat menerapkan untuk menjawab soal-soal latihan 
+\end{myitemize} & 
+Total Nilai Latihan = 25\% (*)\\
+
+6, 7, 8 & Memahami dan dapat menerapkan pemrograman script Python &
+\begin{myitemize}
+	\item
+	Pemrograman Python
+	\item
+	Pemrograman Python untuk jaringan
+	\item
+	Pemrograman Python untuk GUI
+\end{myitemize} &
+\begin{myitemize}
+	\item
+	Presentasi
+	\item
+	Contoh kasus
+	\item
+	Tanya-jawab
+	\item
+	Latihan Tertulis di setiap akhir pertemuan
+\end{myitemize} &
+\begin{myitemize}
+	\item
+	Kemampuan memahami metode yang diajarkan dan dapat menerapkan untuk menjawab soal-soal latihan
+\end{myitemize} & 
+Total Nilai Latihan = 25\% (*) \\
+
+\textbf{9, 10 (UTS)} & & Materi UTS:
+\begin{myitemize}
+	\item
+	Command line
+	\item
+	git
+	\item
+	Regular Expression
+	\item
+	Python scripting
+\end{myitemize} &
+\begin{myitemize}
+	\item
+	Open book, laptop/komputer
+	\item
+	180 menit
+\end{myitemize} &
+\begin{myitemize}
+	\item Kemampuan memahami metode yang diajarkan 
+\end{myitemize} &
+25\%\\
+
+11, 12 & Memahami dan dapat menerapkan Python sebagai web server &
+\begin{myitemize}
+	\item
+	Python sebagai web server
+\end{myitemize} & 
+\begin{myitemize}
+	\item
+	Presentasi
+	\item
+	Contoh kasus
+	\item
+	Tanya-jawab
+	\item
+	Latihan Tertulis di setiap akhir pertemuan
+\end{myitemize} &
+\begin{myitemize}
+	\item Kemampuan memahami metode yang diajarkan dan dapat menerapkan untuk menjawab soal-soal latihan
+\end{myitemize} & 
+Total Nilai Latihan = 25\% (*)\\
+
+13 & Memahami dan dapat menerapkan proses Python web server yang melayani web service & \begin{myitemize}
+	\item
+	Web service
+	\item
+	XML
+	\item
+	REST
+	\item
+	JSON
+\end{myitemize} & 
+\begin{myitemize}
+	\item
+	Presentasi
+	\item
+	Contoh kasus
+	\item
+	Tanya-jawab
+	\item
+	Latihan Tertulis
+\end{myitemize} &
+\begin{myitemize}
+	\item Kemampuan memahami metode yang diajarkan dan dapat menerapkan untuk menjawab soal-soal latihan
+\end{myitemize} &
+Total Nilai Latihan = 25\% (*)\\
+
+14, 15, 16 & 
+\begin{myitemize}
+	\item 
+	Memahami dan dapat memahami Python Django sebagai framework untuk membuat aplikasi berbasis web
+	\item
+	Mendiskusi-kan dalam kelompok untuk mengimplementasi kasus dalam sebuah proyek (UAS)
+\end{myitemize} & 
+\begin{myitemize}
+	\item
+	Python Django
+\end{myitemize} & 
+\begin{myitemize}
+	\item
+	Presentasi
+	\item
+	Contoh kasus
+	\item
+	Tanya-jawab
+	\item
+	Diskusi proyek akhir (UAS)
+	\item
+	Per kelompok maksimum 4 orang
+\end{myitemize} & 
+\begin{myitemize}
+	\item
+	Kemampuan memahami materi yang ditugaskan
+	\item
+	Kemampuan mepresentasikan materi yang ditugaskan
+	\item
+	Kemampuan menjawab pertanyaan-pertanyaan yang muncul selama diskusi.
+\end{myitemize} &
+25\%\\
+
+17, 18 (UAS) & & Materi UAS:
+\begin{myitemize}
+	\item
+	Presentasi aplikasi berbasis Open Source
+\end{myitemize} & 
+\begin{myitemize}
+	\item
+	Ujian Akhir Semester
+	\item
+	Presentasi
+	\item
+	10 menit per kelompok
+\end{myitemize} & 
+\begin{myitemize}
+	\item
+	Kemampuan memahami metode yang diajarkan selama satu semester dan dapat menerapkan untuk menjawab soal-soal UAS 
+\end{myitemize} &
+25\%\\
+
+\bottomrule
+\end{longtable}
+\clearpage
+\vspace*{.15in}
+\noindent\textbf{Deskripsi Tugas dan Ujian:}
+
+\begin{longtable}[]{p{4cm}P{12cm}}
+	\toprule
+	Tipe dan Bobot & Penjelasan dan Rubrik Nilai\\
+	\midrule
+	\endhead
+	
+	Latihan harian \break Bobot 25\% & 
+	\begin{myitemize}
+			\item
+			Ujian tertulis (Sifat : Open book dan laptop/komputer)
+			\item
+			Nilai latihan harian akan ditotal menjadi sebuah nilai.
+			\item
+			Kriteria Penilaian: Nilai perorangan
+		\end{myitemize}
+		\begin{itemize}[label={$\bullet$},noitemsep,topsep=0pt,partopsep=0pt]
+			\item
+			Dikerjakan dengan langkah yang benar dan sistematis: 80\%
+			\item
+			Hasil yang dicapai benar: 20\%
+		\end{itemize}
+	\tabularnewline
+		
+	UTS \break Bobot 25\% &
+	\begin{myitemize}
+		\item
+		Ujian tertulis (Sifat : Open book dan laptop/komputer)
+		\item
+		Kriteria Penilaian: Nilai perorangan
+	\end{myitemize}	
+	\begin{itemize}[label={$\bullet$},noitemsep,topsep=0pt,partopsep=0pt]
+		\item
+		Dikerjakan dengan langkah yang benar dan sistematis: 80\%
+		\item
+		Hasil yang dicapai benar: 20\%
+	\end{itemize}\tabularnewline
+	
+	Diskusi dan Presentasi \break Bobot 25\% &
+	\begin{myitemize}
+		\item
+		Bentuk: Forum Diskusi kelompok dan presentasi
+		\item
+		Kriteria Penilaian: Nilai kelompok
+	\end{myitemize}	
+	\begin{itemize}[label={$\bullet$},noitemsep,topsep=0pt,partopsep=0pt]
+		\item
+		Memahami materi yang ditugaskan: 60\%
+		\item
+		Dapat mepresentasikan materi dengan baik: 20\%
+		\item
+		Mampu menjawab pertanyaan - pertanyaan: 20\%
+	\end{itemize}\tabularnewline
+	
+	
+	Proyek Akhir (UAS) \break Bobot 25\% & 
+	\begin{myitemize}
+		\item
+		Berbentuk software aplikasi yang dibuat untuk menyelesaikan problem
+		sederhana di dunia nyata.
+		\item
+		Menggunakan software berbasis open source.
+		\item
+		Dikumpulkan dan dipresentasikan pada dosen pada saat UAS.
+		\item
+		Kriteria Penilaian: Nilai kelompok
+	\end{myitemize}
+	
+	\begin{itemize}[label={$\bullet$},noitemsep,topsep=0pt,partopsep=0pt]
+		\item
+		Software aplikasi berhasil dibuat: 25\%
+		\item
+		Sesuai dengan metode yang ditugaskan: 50\%
+		\item
+		Hasil yang dicapai benar: 25\%
+	\end{itemize}\tabularnewline
+	\bottomrule
+\end{longtable}
+
+\iffalse
+\vskip.15in
+\noindent\textbf{Tanggal-tanggal Penting:}
+\begin{center} \begin{minipage}{3.8in}
+\begin{flushleft}
+Midterm \#1      \dotfill ~\={A}b\={a}n 16, 1393  \\
+Midterm \#2      \dotfill ~\={A}zar 21, 1393  \\
+%Project Deadline \dotfill ~Month Day \\
+Final Exam       \dotfill ~Dey 18, 1393  \\
+\end{flushleft}
+\end{minipage}
+\end{center}
+\fi
+\clearpage
+\vskip.15in
+\noindent\textbf{Norma Akademik:}
+\begin{enumerate}
+	\item
+	Kegiatan pembelajaran dimulai tepat waktu.
+	\item
+	Selama proses pembelajaran berlangsung HP dimatikan/silent. Mahasiswa tidak diijinkan menggunakan/bermain HP di kelas.
+	\item
+	Pengumpulan tugas ditetapkan sesuai jadwal. Bagi yang terlambat nilai hanya 75\% nya, dan bila terlambat 1 hari mendapat nilai hanya 50\% nya, lebih dari satu hari mendapat nilai 0\%.
+	\item
+	Mahasiswa yang mengerjakan tugas dan ujian yang terbukti mencontoh mahasiswa lain diminta mengundurkan diri semester ini dan bisa mengikuti di semester depan (bila ada).
+	\item 
+	Aturan jumlah minimal presensi dalam pembelajaran tetap diberlakukan
+	(75\% kehadiran), termasuk aturan cara berpakaian atau bersepatu.
+
+\end{enumerate}
+%%%%%% THE END
+\end{document}
