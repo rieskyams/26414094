@@ -1,0 +1,1 @@
+# grep -i "^Sep 18" /var/log/messages | grep -i "kernel" | wc -l
